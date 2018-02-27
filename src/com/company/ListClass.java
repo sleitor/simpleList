@@ -41,12 +41,28 @@ public class ListClass implements ListInterface {
     }
 
     @Override
+    public void removeAfter(int count) {
+        if (length > count) {
+            int position = 0;
+            Node positionItem = this.head;
+            while (position < count) {
+                positionItem = positionItem.getNext();
+                position++;
+            }
+            length = position;
+            tail = positionItem;
+            tail.setNext(null);
+        }
+    }
+
+    @Override
     public void print() {
-        System.out.println("display list:");
+        System.out.print("Print list: ");
         Node current = this.head;
         while (current != null) {
-            System.out.println(current.getData());
+            System.out.print(current.getData() + " ");
             current = current.getNext();
         }
+        System.out.println();
     }
 }
